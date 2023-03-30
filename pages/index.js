@@ -1,7 +1,10 @@
 import React, {useContext} from "react";
 
+// import {Console} from '@sebastiano1995/sebs-library'
+// import  {Button} from "@sebastiano1995/sebs-library/packages/react/Button/dist/button.es";
 import {Context} from '../context';
 import axios from 'axios';
+import {formatDate} from '@sebastiano1995/utils-js'
 import { useRouter } from "next/router";
 
 const putApi = 'https://api.chatengine.io/users';
@@ -10,7 +13,6 @@ export default function Auth() {
   const router = useRouter();
   const ctx = useContext(Context);
   const {setUsername, username, secret, setSecret} = ctx;
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -22,16 +24,15 @@ export default function Auth() {
 
     <div className="auth-container">
       <form className="auth-form" onSubmit={handleSubmit}>
-        <div className="auth-title">NextJS Chat</div>
+        <div className="auth-title">NextJS Chat {formatDate(new Date())}</div>
         <div className="input-container">
           <input placeholder="Email" className="text-input" onChange={e=> setUsername(e.target.value)}/>
         </div>
         <div className="input-container">
           <input placeholder="Password" type="password" className="text-input" onChange={e=> setSecret(e.target.value)}/>
         </div>
-        <button type="submit" className="submit-button">
-          Login / Sign Up
-        </button>
+    {/* <Button >Login / Set Up</Button> */}
+
       </form>
     </div>
   </div>;
